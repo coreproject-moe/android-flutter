@@ -66,7 +66,7 @@ class _CarouselState extends State<Carousel> {
         height: widget.height,
 
         child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
           transitionBuilder: (Widget child, Animation<double> animation) {
             return FadeTransition(opacity: animation, child: child);
           },
