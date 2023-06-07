@@ -23,27 +23,30 @@ class _CarouselState extends State<Carousel> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addPersistentFrameCallback(startChangingOpacity);
     index = 0;
     super.initState();
+  }
+
+  void startChangingOpacity([nothing]){
+    print("start");
   }
 
   @override
   Widget build(BuildContext context) {
     var specificData = widget.data.elementAt(index);
 
-
     return GestureDetector(
-      onPanUpdate: (details) {
-
+      onHorizontalDragEnd: (dragEndDetails) {
         // Swiping in right direction.
-        if (details.delta.dx > 0) {
+        if (dragEndDetails.primaryVelocity! < 0) {
           setState(() {
             index+=1;
           });
         }
 
         // Swiping in left direction.
-        if (details.delta.dx < 0) {
+        else if  (dragEndDetails.primaryVelocity! > 0) {
           setState(() {
             index-=1;
           });
@@ -53,13 +56,17 @@ class _CarouselState extends State<Carousel> {
       child: SizedBox(
         width: widget.width,
         height: widget.height,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(specificData['background_image']!),
-                fit: BoxFit.cover),
+        child: AnimatedOpacity(
+            duration: const Duration(milliseconds:  500),
+            opacity: 1.0,
+            child: DecoratedBox(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(specificData['background_image']!),
+                  fit: BoxFit.cover),
+            ),
+            child: const Center(child: FlutterLogo(size: 300)),
           ),
-          child: const Center(child: FlutterLogo(size: 300)),
         ),
       ),
     );

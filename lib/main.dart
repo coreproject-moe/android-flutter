@@ -17,6 +17,7 @@ class CoreProjectApp extends StatelessWidget {
               height: 400,
               data: const [
             {'name': 'sora', 'background_image': "assets/images/1.jpg"}
+                ,   {'name': 'amamiya', 'background_image': "assets/images/2.jpg"}
           ])),
     );
   }
