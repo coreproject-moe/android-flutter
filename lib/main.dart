@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import "./components/fading_image_slider.dart";
-void main (){
+import "./components/carousel.dart";
+
+void main() {
   runApp(const CoreProjectApp());
 }
 
@@ -10,23 +11,13 @@ class CoreProjectApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:Scaffold(
-        body: FadingImagesSlider(
-          textAlignment: Alignment.center,
-          texts: const [
-            Text(
-              'test',
-            ),
-            Text(
-              'test2',
-            )
-          ],
-          images: [
-            Image.asset('assets/images/1.jpg'),
-            Image.asset('assets/images/2.jpg')
-          ],
-        ),
-      ),
+      home: Scaffold(
+          body: Carousel(
+              width: MediaQuery.of(context).size.width, // make it full width
+              height: 400,
+              data: const [
+            {'name': 'sora', 'background_image': "assets/images/1.jpg"}
+          ])),
     );
   }
 }
