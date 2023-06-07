@@ -19,37 +19,53 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
-  late int index;
+  late int _index;
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPersistentFrameCallback(startChangingOpacity);
-    index = 0;
+    _index = 0;
     super.initState();
   }
 
-  void startChangingOpacity([nothing]){
-    print("start");
+  void addOneToIndex(){
+    if (_index +1 == widget.data.length){
+     setState(() {
+       _index = 0;
+     });
+    } else {
+      setState(() {
+        _index +=1;
+      });
+    }
+  }
+
+  void minusOneToIndex(){
+    if (_index  == 0){
+      setState(() {
+        _index = widget.data.length - 1;
+      });
+    }
+    else {
+      setState(() {
+        _index -=1;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var specificData = widget.data.elementAt(index);
+    var specificData = widget.data.elementAt(_index);
 
     return GestureDetector(
       onHorizontalDragEnd: (dragEndDetails) {
         // Swiping in right direction.
         if (dragEndDetails.primaryVelocity! < 0) {
-          setState(() {
-            index+=1;
-          });
+          addOneToIndex();
         }
 
         // Swiping in left direction.
         else if  (dragEndDetails.primaryVelocity! > 0) {
-          setState(() {
-            index-=1;
-          });
+          minusOneToIndex();
         }
       },
 
