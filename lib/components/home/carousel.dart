@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
@@ -67,30 +65,40 @@ class _CarouselState extends State<Carousel> {
         width: widget.width,
         height: widget.height,
         child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 200),
+          reverseDuration: const Duration(milliseconds: 200),
+          switchInCurve: Curves.easeIn,
+          switchOutCurve: Curves.easeOut,
           transitionBuilder: (Widget child, Animation<double> animation) {
             return Stack(children: [
               FadeTransition(
                 opacity: animation,
                 child: child,
               ),
-              BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: animation.status == AnimationStatus.reverse || animation.status == AnimationStatus.forward ? 10 : 0,
-                  sigmaY: animation.status == AnimationStatus.reverse || animation.status == AnimationStatus.forward ?  10 : 0,
-                ),
-                child: Container(
-                  color: Colors.transparent,
-                ),
-              ),
             ]);
           },
-          child: DecoratedBox(
+          child: Stack(
             key: ValueKey<int>(_index),
-            decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage(specificData['background_image']!), fit: BoxFit.cover),
-            ),
-            child: const Center(child: FlutterLogo(size: 300)),
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(specificData['background_image']!), fit: BoxFit.cover),
+                ),
+                child: const Placeholder(),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(begin: FractionalOffset.bottomCenter, end: FractionalOffset.topCenter,
+                      stops: [
+                        0.05,
+                        0.25,
+                      ],
+                      colors: [
+                      Color.fromRGBO(3, 2, 12, 1.0),
+                      Color.fromRGBO(3, 2, 12, 0.3),
+                    ],)),
+              ),
+            ],
           ),
         ),
       ),
