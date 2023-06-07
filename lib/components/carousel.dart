@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Carousel extends StatefulWidget {
   const Carousel(
       {super.key,
@@ -18,22 +19,48 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
-  int index = 0;
+  late int index;
+
+  @override
+  void initState() {
+    index = 0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var specificData = widget.data.elementAt(index);
 
-    return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(specificData['background_image']!),
-              fit: BoxFit.cover),
+
+    return GestureDetector(
+      onPanUpdate: (details) {
+
+        // Swiping in right direction.
+        if (details.delta.dx > 0) {
+          setState(() {
+            index+=1;
+          });
+        }
+
+        // Swiping in left direction.
+        if (details.delta.dx < 0) {
+          setState(() {
+            index-=1;
+          });
+        }
+      },
+
+      child: SizedBox(
+        width: widget.width,
+        height: widget.height,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(specificData['background_image']!),
+                fit: BoxFit.cover),
+          ),
+          child: const Center(child: FlutterLogo(size: 300)),
         ),
-        child: const Center(child: FlutterLogo(size: 300)),
       ),
     );
   }
