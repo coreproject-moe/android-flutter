@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
-  const Carousel({super.key, required this.width, required this.height, required this.data, this.backgroundColor = Colors.black});
+  const Carousel(
+      {super.key,
+      required this.width,
+      required this.height,
+      required this.data,
+      this.backgroundColor = Colors.black});
 
   final double width;
   final double height;
@@ -82,21 +87,26 @@ class _CarouselState extends State<Carousel> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(specificData['background_image']!), fit: BoxFit.cover),
+                  image: DecorationImage(
+                      image: AssetImage(specificData['background_image']!),
+                      fit: BoxFit.cover),
                 ),
-                child: const Placeholder(),
+                child: Container(), // work here
               ),
               Container(
                 decoration: const BoxDecoration(
-                    gradient: LinearGradient(begin: FractionalOffset.bottomCenter, end: FractionalOffset.topCenter,
-                      stops: [
-                        0.05,
-                        0.25,
-                      ],
-                      colors: [
-                      Color.fromRGBO(3, 2, 12, 1.0),
-                      Color.fromRGBO(3, 2, 12, 0.3),
-                    ],)),
+                    gradient: LinearGradient(
+                  begin: FractionalOffset.bottomCenter,
+                  end: FractionalOffset.topCenter,
+                  stops: [
+                    0.05,
+                    0.25,
+                  ],
+                  colors: [
+                    Color.fromRGBO(3, 2, 12, 1.0),
+                    Color.fromRGBO(3, 2, 12, 0.3),
+                  ],
+                )),
               ),
             ],
           ),
