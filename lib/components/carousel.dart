@@ -28,11 +28,13 @@ class _CarouselState extends State<Carousel> {
       width: widget.width,
       height: widget.height,
       child: DecoratedBox(
-          decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(specificData['background_image']!),
-            fit: BoxFit.cover),
-      )),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(specificData['background_image']!),
+              fit: BoxFit.cover),
+        ),
+        child: const Center(child: FlutterLogo(size: 300)),
+      ),
     );
   }
 }
