@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
@@ -64,19 +66,34 @@ class _CarouselState extends State<Carousel> {
       child: SizedBox(
         width: widget.width,
         height: widget.height,
-
         child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 200),
           transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(opacity: animation, child: child);
+
+            return Stack(
+              children: [
+                FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 2.5 * animation.value,
+                    sigmaY: 2.5 * animation.value,
+                  ),
+                  child: Container(
+                    color: Colors.transparent,
+                  ),
+              ),
+            ]);
           },
           child: DecoratedBox(
-              key: ValueKey<int>(_index),
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(specificData['background_image']!), fit: BoxFit.cover),
-              ),
-              child: const Center(child: FlutterLogo(size: 300)),
-        ),
+            key: ValueKey<int>(_index),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(specificData['background_image']!), fit: BoxFit.cover),
+            ),
+            child: const Center(child: FlutterLogo(size: 300)),
+          ),
         ),
       ),
     );
