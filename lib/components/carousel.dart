@@ -67,23 +67,21 @@ class _CarouselState extends State<Carousel> {
         width: widget.width,
         height: widget.height,
         child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 500),
           transitionBuilder: (Widget child, Animation<double> animation) {
-
-            return Stack(
-              children: [
-                FadeTransition(
-                  opacity: animation,
-                  child: child,
+            return Stack(children: [
+              FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+              BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: animation.status == AnimationStatus.reverse || animation.status == AnimationStatus.forward ? 10 : 0,
+                  sigmaY: animation.status == AnimationStatus.reverse || animation.status == AnimationStatus.forward ?  10 : 0,
                 ),
-                BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 2.5 * animation.value,
-                    sigmaY: 2.5 * animation.value,
-                  ),
-                  child: Container(
-                    color: Colors.transparent,
-                  ),
+                child: Container(
+                  color: Colors.transparent,
+                ),
               ),
             ]);
           },
