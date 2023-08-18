@@ -1,5 +1,9 @@
 buildscript {
     ext.kotlin_version = '1.9.0'
+    // Geckoview 
+    ext.geckoviewChannel = "nightly"
+    ext.geckoviewVersion = "118.0.20230817214619"
+    
     repositories {
         google()
         mavenCentral()
