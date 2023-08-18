@@ -38,7 +38,8 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.17'
+        
+        jvmTarget JavaVersion.VERSION_17
     }
 
     sourceSets {
