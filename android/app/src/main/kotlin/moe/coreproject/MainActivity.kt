@@ -1,4 +1,4 @@
-package com.example.coreproject
+package moe.coreproject
 
 import io.flutter.embedding.android.FlutterActivity
 
