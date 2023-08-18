@@ -4,7 +4,11 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-
+ext{
+    geckoviewChannel = "nightly"
+    geckoviewVersion = "118.0.20230817214619"
+    
+}
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
