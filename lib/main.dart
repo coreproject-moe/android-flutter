@@ -16,8 +16,8 @@ class CoreProjectApp extends StatelessWidget {
               width: MediaQuery.of(context).size.width, // make it full width
               height: 400,
               data: const [
-            {'name': 'sora', 'background_image': "assets/images/1.jpg"}
-                ,   {'name': 'amamiya', 'background_image': "assets/images/2.jpg"}
+            {'name': 'sora', 'background_image': "assets/images/1.jpg"},
+            {'name': 'amamiya', 'background_image': "assets/images/2.jpg"}
           ])),
     );
   }

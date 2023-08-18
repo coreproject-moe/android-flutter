@@ -1,12 +1,16 @@
 buildscript {
     ext.kotlin_version = '1.9.0'
+    // Geckoview 
+    ext.geckoviewChannel = "nightly"
+    ext.geckoviewVersion = "118.0.20230817214619"
+    
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath 'com.android.tools.build:gradle:7.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -14,7 +18,10 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral()
+        mavenCentral() 
+        maven {
+            url "https://maven.mozilla.org/maven2/"
+        }
     }
 }
 
