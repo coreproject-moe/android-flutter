@@ -5,11 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "gradle" # See documentation for possible values
-    directory: "/android" # Location of package manifests
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pub" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
+    - package-ecosystem: 'gradle' # See documentation for possible values
+      directory: '/android' # Location of package manifests
+      schedule:
+          interval: 'daily'
+    - package-ecosystem: 'pub' # See documentation for possible values
+      directory: '/' # Location of package manifests
+      schedule:
+          interval: 'daily'
+    - package-ecosystem: 'actions'
+      directory: '/'
+      schedule:
+          interval: 'daily'
