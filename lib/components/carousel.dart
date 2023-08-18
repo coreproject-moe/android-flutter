@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
-  const Carousel({super.key, required this.width, required this.height, required this.data, this.backgroundColor = Colors.black});
+  const Carousel(
+      {super.key,
+      required this.width,
+      required this.height,
+      required this.data,
+      this.backgroundColor = Colors.black});
 
   final double width;
   final double height;
@@ -64,19 +69,20 @@ class _CarouselState extends State<Carousel> {
       child: SizedBox(
         width: widget.width,
         height: widget.height,
-
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           transitionBuilder: (Widget child, Animation<double> animation) {
             return FadeTransition(opacity: animation, child: child);
           },
           child: DecoratedBox(
-              key: ValueKey<int>(_index),
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(specificData['background_image']!), fit: BoxFit.cover),
-              ),
-              child: const Center(child: FlutterLogo(size: 300)),
-        ),
+            key: ValueKey<int>(_index),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(specificData['background_image']!),
+                  fit: BoxFit.cover),
+            ),
+            child: const Center(child: FlutterLogo(size: 300)),
+          ),
         ),
       ),
     );
