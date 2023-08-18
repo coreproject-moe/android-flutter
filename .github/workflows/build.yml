@@ -18,5 +18,4 @@ jobs:
               with:
                   flutter-version: '3.13.0'
             - run: flutter pub get
-            - run: flutter build apk -v
-            - run: flutter build appbundle
+            - run: flutter build apk -v --release
