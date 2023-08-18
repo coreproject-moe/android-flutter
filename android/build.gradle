@@ -14,7 +14,10 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral()
+        mavenCentral() 
+        maven {
+            url "https://maven.mozilla.org/maven2/"
+        }
     }
 }
 
