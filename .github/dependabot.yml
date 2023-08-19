@@ -9,6 +9,8 @@ updates:
       directory: '/android' # Location of package manifests
       schedule:
           interval: 'daily'
+      ignore:
+          - dependency-name: 'gradle'
 
     - package-ecosystem: 'pub' # See documentation for possible values
       directory: '/' # Location of package manifests
