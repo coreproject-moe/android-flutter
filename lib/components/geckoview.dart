@@ -4,15 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-class GeckoView extends StatelessWidget {
-  const GeckoView({super.key});
+class GeckoView extends StatefulWidget {
+  const GeckoView({super.key, required this.url});
+  final String url;
 
+  @override
+  State<GeckoView> createState() => _GeckoViewState();
+}
+
+class _GeckoViewState extends State<GeckoView> {
   @override
   Widget build(BuildContext context) {
     // This is used in the platform side to register the view.
     const String viewType = '<gecko-view>';
     // Pass parameters to the platform side.
-    const Map<String, dynamic> creationParams = <String, dynamic>{};
+    late Map<String, dynamic> creationParams = <String, dynamic>{
+      "url": widget.url
+    };
 
     return PlatformViewLink(
       viewType: viewType,

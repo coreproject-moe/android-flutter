@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
-  const Carousel(
-      {super.key,
+  const Carousel({
+      super.key,
       required this.width,
       required this.height,
       required this.data,
@@ -99,9 +99,7 @@ class _CarouselState extends State<Carousel> {
                       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                       child: Container(
                         decoration:
-                            BoxDecoration(
-                              color: Colors.white.withOpacity(0.0)
-                              ),
+                            BoxDecoration(color: Colors.white.withOpacity(0.0)),
                       ),
                     )
                   : const Placeholder(),

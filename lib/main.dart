@@ -12,9 +12,6 @@ class CoreProjectApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            body: GeckoView(
-      key: key,
-    )));
+        home: Scaffold(body: GeckoView(key: key, url: 'https://google.com')));
   }
 }
