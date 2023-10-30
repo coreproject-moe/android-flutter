@@ -99,7 +99,9 @@ class _CarouselState extends State<Carousel> {
                       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                       child: Container(
                         decoration:
-                            BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                            BoxDecoration(
+                              color: Colors.white.withOpacity(0.0)
+                              ),
                       ),
                     )
                   : const Placeholder(),
