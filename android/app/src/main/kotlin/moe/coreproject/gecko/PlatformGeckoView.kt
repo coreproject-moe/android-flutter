@@ -37,6 +37,6 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
         session.open(sRuntime)
         view.setSession(session)
         view.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
-        session.loadUri(creationParams?.get("url").toString()) // Or any other URL...
+        session.loadUri(creationParams?.getOrDefault("url","about:buildconfig").toString()) // Or any other URL...
     }
 }
