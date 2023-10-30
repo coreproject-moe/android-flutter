@@ -29,20 +29,16 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
         session = GeckoSession()
 
         // Workaround for Bug 1758212
-        session.setContentDelegate(object : GeckoSession.ContentDelegate {
-            // Implement the methods of ContentDelegate here
-        })
+        session.setContentDelegate(object : GeckoSession.ContentDelegate{} )
 
-        if (sRuntime == null) {
+        if (! ::sRuntime.isInitialized) {
             // GeckoRuntime can only be initialized once per process
             sRuntime = GeckoRuntime.create(context)
         }
 
         session.open(sRuntime)
         view.setSession(session)
-        view.setLayoutParams(
-                ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT))
+        view.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
         session.loadUri("about:buildconfig") // Or any other URL...
     }
 }
