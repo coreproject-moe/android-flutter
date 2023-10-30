@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
-  const Carousel(
-      {super.key,
+  const Carousel({
+      super.key,
       required this.width,
       required this.height,
       required this.data,
