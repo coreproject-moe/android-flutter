@@ -13,7 +13,6 @@ import org.mozilla.geckoview.GeckoView;
 
 internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
     private lateinit var sRuntime: GeckoRuntime
-
     // internal vals
     private var view : GeckoView
     private  var session : GeckoSession
@@ -22,7 +21,9 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
         return view
     }
 
-    override fun dispose() {}
+    override fun dispose() {
+       // sRuntime.shutdown()
+    }
 
     init{
         view = GeckoView(context);
@@ -30,12 +31,11 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
 
         // Workaround for Bug 1758212
         session.setContentDelegate(object : GeckoSession.ContentDelegate{} )
-
-        if (! ::sRuntime.isInitialized) {
-            // GeckoRuntime can only be initialized once per process
-            sRuntime = GeckoRuntime.create(context)
-        }
-
+        
+        // GeckoRuntime can only be initialized once per process
+        // https://stackoverflow.com/a/59368968
+        sRuntime = GeckoRuntime.getDefault(context);
+        
         session.open(sRuntime)
         view.setSession(session)
         view.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
