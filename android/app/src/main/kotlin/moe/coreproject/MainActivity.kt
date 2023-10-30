@@ -9,7 +9,7 @@ class MainActivity: FlutterActivity() {
         flutterEngine
                 .platformViewsController
                 .registry
-                .registerViewFactory("<gecko-view>", 
-                                      GeckoViewFactory())
+                .registerViewFactory("<gecko-view>",
+                        PlatformGeckoFactory())
   }
 }
