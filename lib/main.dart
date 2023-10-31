@@ -1,4 +1,3 @@
-import 'package:coreproject/components/geckoview.dart';
 import 'package:flutter/material.dart';
 import "./components/carousel.dart";
 
