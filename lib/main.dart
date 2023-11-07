@@ -1,3 +1,4 @@
+import 'package:coreproject/components/geckoview.dart';
 import 'package:flutter/material.dart';
 import "./components/carousel.dart";
 
@@ -11,14 +12,8 @@ class CoreProjectApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          body: Carousel(
-              width: MediaQuery.of(context).size.width, // make it full width
-              height: 400,
-              data: const [
-            {'name': 'sora', 'background_image': "assets/images/1.jpg"},
-            {'name': 'amamiya', 'background_image': "assets/images/2.jpg"}
-          ])),
-    );
+        home: Scaffold(
+      body: GeckoView(url: 'https://canyoublockit.com/'),
+    ));
   }
 }
