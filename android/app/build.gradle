@@ -63,6 +63,11 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    // https://stackoverflow.com/a/46804190
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
 }
 
 flutter {
