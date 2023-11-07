@@ -1,5 +1,6 @@
 import 'package:coreproject/components/geckoview.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import "./components/carousel.dart";
 
 void main() {
@@ -11,7 +12,7 @@ class CoreProjectApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         home: Scaffold(
       body: GeckoView(url: 'https://canyoublockit.com/'),
     ));

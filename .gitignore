@@ -310,7 +310,7 @@ DerivedData/
 
 # Package management formats
 *.dmg
-*.xpi
+.xpi
 *.gem
 *.egg
 *.deb
