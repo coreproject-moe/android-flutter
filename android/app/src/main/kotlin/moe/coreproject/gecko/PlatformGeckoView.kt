@@ -10,6 +10,7 @@ import io.flutter.plugin.platform.PlatformView
 import org.mozilla.geckoview.GeckoRuntime;
 import org.mozilla.geckoview.GeckoSession;
 import org.mozilla.geckoview.GeckoView;
+import android.util.Log
 
 internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
     private lateinit var sRuntime: GeckoRuntime
@@ -35,7 +36,7 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
         // https://stackoverflow.com/a/59368968
         sRuntime = GeckoRuntime.getDefault(context);
         session.open(sRuntime)
-        sRuntime.getWebExtensionController().installBuiltIn("resource://android/assets/addons/uBlock0_1.53.0.firefox.xpi")
+        sRuntime.getWebExtensionController().installBuiltIn("resource://android/assets/ublock/")
         view.setSession(session)
         view.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
         session.loadUri(creationParams?.getOrDefault("url","about:buildconfig").toString()) // Or any other URL...
