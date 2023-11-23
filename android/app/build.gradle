@@ -6,7 +6,7 @@ plugins {
 
 ext{
     geckoviewChannel = "nightly"
-    geckoviewVersion = "122.0.20231122095244"
+    geckoviewVersion = "122.0.20231123095534"
 }
 
 def localProperties = new Properties()
