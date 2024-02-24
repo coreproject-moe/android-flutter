@@ -7,7 +7,7 @@ plugins {
 ext{
     geckoviewChannel = "nightly"
 
-    geckoviewVersion = "125.0.20240222103314"
+    geckoviewVersion = "125.0.20240223095502"
 
 }
 
