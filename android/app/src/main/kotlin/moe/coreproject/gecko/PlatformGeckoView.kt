@@ -36,7 +36,8 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
         // https://stackoverflow.com/a/59368968
         sRuntime = GeckoRuntime.getDefault(context);
         session.open(sRuntime)
-        sRuntime.getWebExtensionController().installBuiltIn("resource://android/assets/ublock/")
+        sRuntime.getWebExtensionController()
+            .ensureBuiltIn("resource://android/assets/uBlock0_1.57.2.firefox/","uBlock0@raymondhill.net")
         view.setSession(session)
         view.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
         session.loadUri(creationParams?.getOrDefault("url","about:buildconfig").toString()) // Or any other URL...
