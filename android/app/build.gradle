@@ -6,7 +6,6 @@ plugins {
 
 ext{
     geckoviewChannel = "nightly"
-
     geckoviewVersion = "126.0.20240407213050"
 
 }
@@ -68,7 +67,7 @@ android {
 
     // https://stackoverflow.com/a/46804190
     dexOptions {
-        javaMaxHeapSize "4G"
+        javaMaxHeapSize "16G"
     }
 }
 
