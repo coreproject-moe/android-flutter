@@ -12,34 +12,46 @@ import org.mozilla.geckoview.GeckoSession;
 import org.mozilla.geckoview.GeckoView;
 import android.util.Log
 
-internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<String?, String?>?) : PlatformView {
+internal class PlatformGeckoView(
+    context: Context,
+    id: Int,
+    creationParams: Map<String?, String?>?
+) : PlatformView {
     private lateinit var sRuntime: GeckoRuntime
+
     // internal vals
-    private var view : GeckoView
-    private  var session : GeckoSession
+    private var view: GeckoView
+    private var session: GeckoSession
 
     override fun getView(): View {
         return view
     }
 
     override fun dispose() {
-       // sRuntime.shutdown()
+        // sRuntime.shutdown()
     }
 
-    init{
+    init {
         view = GeckoView(context);
         session = GeckoSession()
 
         // Workaround for Bug 1758212
-        session.setContentDelegate(object : GeckoSession.ContentDelegate{} )
+        session.setContentDelegate(object : GeckoSession.ContentDelegate {})
         // GeckoRuntime can only be initialized once per process
         // https://stackoverflow.com/a/59368968
         sRuntime = GeckoRuntime.getDefault(context);
         session.open(sRuntime)
         sRuntime.getWebExtensionController()
-            .ensureBuiltIn("resource://android/assets/uBlock0_1.57.2.firefox/","uBlock0@raymondhill.net")
+            .installBuiltIn("resource://android/assets/uBlock0_1.57.2.firefox/")
         view.setSession(session)
-        view.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT))
-        session.loadUri(creationParams?.getOrDefault("url","about:buildconfig").toString()) // Or any other URL...
+        view.setLayoutParams(
+            ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        )
+        session.loadUri(
+            creationParams?.getOrDefault("url", "about:buildconfig").toString()
+        ) // Or any other URL...
     }
 }
