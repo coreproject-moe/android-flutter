@@ -17,6 +17,8 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
     // internal vals
     private var view : GeckoView
     private  var session : GeckoSession
+    private final var EXTENSION_LOCATION = "resource://android/assets/ublock/"
+
     override fun getView(): View {
         return view
     }
@@ -36,7 +38,7 @@ internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<
         sRuntime = GeckoRuntime.getDefault(context);
         session.open(sRuntime)
         sRuntime.getWebExtensionController().ensureBuiltIn(
-            "resource://android/assets/uBlock0_1.57.2.firefox/",
+            EXTENSION_LOCATION,
             "uBlock0@raymondhill.net"
         ).accept(
             { extension ->
