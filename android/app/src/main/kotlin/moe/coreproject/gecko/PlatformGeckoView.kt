@@ -12,7 +12,7 @@ import org.mozilla.geckoview.GeckoSession;
 import org.mozilla.geckoview.GeckoView;
 import android.util.Log
 
-internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
+internal class PlatformGeckoView(context: Context, id: Int, creationParams: Map<String?, String?>?) : PlatformView {
     private lateinit var sRuntime: GeckoRuntime
     // internal vals
     private var view : GeckoView
