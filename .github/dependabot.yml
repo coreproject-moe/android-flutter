@@ -8,16 +8,22 @@ updates:
     - package-ecosystem: 'gradle' # See documentation for possible values
       directory: '/android' # Location of package manifests
       schedule:
-          interval: 'daily'
+          interval: "weekly"
+          # Check for npm updates on friday
+          day: "friday"
       ignore:
           - dependency-name: 'com.android.tools.build:gradle'
 
     - package-ecosystem: 'pub' # See documentation for possible values
       directory: '/' # Location of package manifests
       schedule:
-          interval: 'daily'
+          interval: "weekly"
+          # Check for npm updates on friday
+          day: "friday"
 
     - package-ecosystem: 'github-actions'
       directory: '/'
       schedule:
-          interval: 'daily'
+          interval: "weekly"
+          # Check for npm updates on friday
+          day: "friday"
