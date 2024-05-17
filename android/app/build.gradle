@@ -6,7 +6,7 @@ plugins {
 
 ext{
     geckoviewChannel = "nightly"
-    geckoviewVersion = "128.0.20240514215634"
+    geckoviewVersion = "128.0.20240515202418"
     ext.kotlin_version = '1.9.24'
 }
 
