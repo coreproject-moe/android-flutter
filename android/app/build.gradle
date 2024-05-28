@@ -69,6 +69,13 @@ android {
     dexOptions {
         javaMaxHeapSize "16G"
     }
+
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1898002
+    // https://searchfox.org/mozilla-central/source/mobile/android/geckoview_example/build.gradle#38
+    aaptOptions{
+        ignoreAssetsPattern  '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        noCompress 'ja'
+    }
 }
 
 flutter {
