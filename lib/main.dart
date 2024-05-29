@@ -14,7 +14,7 @@ class CoreProjectApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
         home: Scaffold(
-      body: GeckoView(url: 'https://google.com'),
+      body: GeckoView(url: 'https://blockads.fivefilters.org/'),
     ));
   }
 }
